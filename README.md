@@ -56,7 +56,7 @@ Here is the payload scheme:
 |Byte index|Description|Values|
 |:---:|--|--|
 |0|Action|0 - Idle<br/>1 - Heating<br/>2 - Cooling<br/>3 - Keeping warm|
-|1|Mode (corresponding to LEDs)|0 - None<br/>1 - Boil<br/>2 - Keep Warm|
+|1|Mode (corresponding to LEDs)|255 - None<br/>1 - Boil<br/>2 - Keep Warm|
 |2-3|Unknown||
 |4|Keep Warm set temperature|40-95 in °C|
 |5|Current temperature|0-100 in °C|
