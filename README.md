@@ -16,7 +16,7 @@ I should probably start with bad news.
  - Keep Warm mode has a configurable time limit but you can't set it higher than 12 hours until you can't hack encrypted MCU firmware. The mode turns off when time passes.
  - Keep Warm mode turns off if current temperature drops fast. For example, if you have 80°C water and refill the kettle with cold water, the temperature will drop and the mode will turn off.
  - Keep Warm mode turns off if the kettle is low at water.
- - Minimum Keep Warm mode temperature is 40 °C.
+ - Minimum Keep Warm mode temperature is 40°C.
 
 ## Connection
 At first you just need to connect to your kettle via BLE.
@@ -50,7 +50,9 @@ You are authenticated now, so you can subscribe [status updates](#status-updates
 ## Status updates
 If you want to receive status updates, you need to subscribe `statusCharacteristic`.
 After you subscribe it, you'll start receiving notifications with payloads.
+
 Here is the payload scheme:
+
 |Byte index|Description|Values|
 |:---:|--|--|
 |0|Action|0 - Idle<br/>1 - Heating<br/>2 - Cooling<br/>3 - Keeping warm|
@@ -91,20 +93,20 @@ I used Xiaomi Kettle protocol to develop kettle<->MQTT bridge in Go that allows 
 Leftmost icon shows current temperature.
 
 I can "enable" or "disable" my kettle by toggling the rightmost icon.
-Actually, I keep Keep Warm mode always enabled on my kettle so this On just means "set temperature to 85 °C via `setupCharacteristic`", Off means "set temperature to 40 °C" since 40 °C is the minimum.
+Actually, I keep Keep Warm mode always enabled on my kettle so this On just means "set temperature to 85°C via `setupCharacteristic`", Off means "set temperature to 40°C" since 40°C is the minimum.
 
 My Keep Warm type is always  1 (heat up to set temperature without boiling).
 
-When I leave my home or go to sleep, Home Assistant "turns off" kettle automatically so it rests at 40 °C. When I come home or wake up, Home Assistant prepares 85 °C water for me!
+When I leave my home or go to sleep, Home Assistant "turns off" kettle automatically so it rests at 40°C. When I come home or wake up, Home Assistant prepares 85°C water for me!
 
-I can also tap&hold leftmost icon and it will make my kettle boil the water (no matter if 85 °C mode is "on" or "off").
+I can also tap&hold leftmost icon and it will make my kettle boil the water (no matter if 85°C mode is "on" or "off").
 This is how I make it boil:
  1. Set Keep Warm type to 0 via `setupCharacteristic`.
  2. Wait for "Cooling" action in [status updates](#status-updates).
  3. Set Keep Warm type back to 1.
 
 When it's ready Home Assistant also sends me "The kettle is boiling" Telegram message so I can pick it up.
-I don't use my boil feature frequently because my 85 °C setting is usually enough to make tea. I need 100 °C water only when I want some soothing herbs.
+I don't use my boil feature frequently because my 85°C setting is usually enough to make tea. I need 100°C water only when I want some soothing herbs.
 
 Home Assistant has HomeKit component so my kettle is also available with Apple Home app and Siri. I can yell "Hey Siri, boil", "Hey Siri, turn kettle on/off" or "Hey Siri, current kettle temperature" at my HomePod :D.
 
