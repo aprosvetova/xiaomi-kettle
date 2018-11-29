@@ -34,10 +34,10 @@ func cipher(key, input []byte) []byte {
 	return cipherCrypt(input, perm)
 }
 
-func MixA(mac []byte, productID int) []byte {
+func mixA(mac []byte, productID int) []byte {
 	return []byte{mac[0], mac[2], mac[5], uint8(productID & 0xff), uint8(productID & 0xff), mac[4], mac[5], mac[1]}
 }
 
-func MixB(mac []byte, productID int) []byte {
+func mixB(mac []byte, productID int) []byte {
 	return []byte{mac[0], mac[2], mac[5], uint8((productID >> 8) & 0xff), mac[4], mac[0], mac[5], uint8(productID & 0xff)}
 }
