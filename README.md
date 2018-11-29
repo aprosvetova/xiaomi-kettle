@@ -1,5 +1,5 @@
 # Xiaomi Kettle BLE protocol
-![The kettle](https://avatars.mds.yandex.net/get-mpic/96484/img_id1900574683909775425/9hq)
+![The kettle](https://i.imgur.com/Y3CwqQK.png)
 
 ## Overview
 Xiaomi Kettle is based on QN9020 MCU that makes use of GATT over Bluetooth Low Energy to communicate with mobile app.
