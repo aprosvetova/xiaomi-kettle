@@ -2,7 +2,7 @@ package kettle
 
 const KeySize = 256
 
-func CipherInit(key []byte) []byte {
+func cipherInit(key []byte) []byte {
 	var perm = make([]byte, KeySize)
 	for i := range perm {
 		perm[i] = byte(i)
@@ -16,7 +16,7 @@ func CipherInit(key []byte) []byte {
 	return perm
 }
 
-func CipherCrypt(input, perm []byte) []byte {
+func cipherCrypt(input, perm []byte) []byte {
 	var index1, index2 uint8
 	output := make([]byte, len(input))
 	for i := 0; i < len(input); i++ {
@@ -29,9 +29,9 @@ func CipherCrypt(input, perm []byte) []byte {
 	return output
 }
 
-func Cipher(key, input []byte) []byte {
-	perm := CipherInit(key)
-	return CipherCrypt(input, perm)
+func cipher(key, input []byte) []byte {
+	perm := cipherInit(key)
+	return cipherCrypt(input, perm)
 }
 
 func MixA(mac []byte, productID int) []byte {
