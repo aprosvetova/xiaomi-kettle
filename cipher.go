@@ -1,15 +1,13 @@
 package kettle
 
 func cipherInit(key []byte) []byte {
-	perm := make([]uint8, 256)
+	var perm = make([]uint8, 0, 256)
+	perm = append(perm, []uint8(key)...)
 	var ia int
 	var j uint8
 	keyLen := uint8(len(key))
-	for i := 0; i <= 255; i++ {
-		perm[i] = uint8(i)
-	}
 	for ia <= 255 {
-		j += uint8(perm[ia] + key[uint8(ia) % keyLen])
+		j += uint8(perm[ia] + key[uint8(ia)%keyLen])
 		perm[ia], perm[j] = perm[j], perm[ia]
 		ia++
 	}
@@ -35,9 +33,9 @@ func cipher(key, input []byte) []byte {
 }
 
 func mixA(mac []byte, productID int) []byte {
-	return []byte { mac[0], mac[2], mac[5], uint8(productID&0xff), uint8(productID&0xff),  mac[4], mac[5], mac[1] }
+	return []byte{mac[0], mac[2], mac[5], uint8(productID & 0xff), uint8(productID & 0xff), mac[4], mac[5], mac[1]}
 }
 
 func mixB(mac []byte, productID int) []byte {
-	return []byte { mac[0], mac[2], mac[5], uint8((productID>>8)&0xff), mac[4], mac[0], mac[5], uint8(productID&0xff) }
+	return []byte{mac[0], mac[2], mac[5], uint8((productID >> 8) & 0xff), mac[4], mac[0], mac[5], uint8(productID & 0xff)}
 }
