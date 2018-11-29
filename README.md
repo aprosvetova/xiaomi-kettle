@@ -114,3 +114,5 @@ Of course, as explained in [caveats](#caveats), I always need to turn on my Keep
 The work is done by Anna Prosvetova.
 
 Thanks to [jadx-gui](https://github.com/skylot/jadx) for APK decompiling, [IDA Pro](https://www.hex-rays.com/products/ida/index.shtml) for native library disassembling and my dear friend [@Scorpi](https://github.com/Scorpi) for moral support and lots of help.
+
+Are you Russian? You can [subscribe my Telegram channel](https://tele.gg/theyforcedme) <3.
