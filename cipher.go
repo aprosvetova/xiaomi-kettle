@@ -1,8 +1,12 @@
 package kettle
 
+const KeySize = 256
+
 func CipherInit(key []byte) []byte {
-	var perm = make([]uint8, 0, 256)
-	perm = append(perm, key...)
+	var perm = make([]byte, KeySize)
+	for i := range perm {
+		perm[i] = byte(i)
+	}
 	var j uint8
 	keyLen := uint8(len(key))
 	for ia := range perm {
