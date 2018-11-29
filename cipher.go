@@ -3,13 +3,11 @@ package kettle
 func cipherInit(key []byte) []byte {
 	var perm = make([]uint8, 0, 256)
 	perm = append(perm, []uint8(key)...)
-	var ia int
 	var j uint8
 	keyLen := uint8(len(key))
-	for ia <= 255 {
+	for ia := range perm {
 		j += uint8(perm[ia] + key[uint8(ia)%keyLen])
 		perm[ia], perm[j] = perm[j], perm[ia]
-		ia++
 	}
 	return perm
 }
